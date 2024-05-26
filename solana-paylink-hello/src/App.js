@@ -58,7 +58,7 @@ const SendTransactionForm = () => {
     }
 
     const connection = new Connection(
-      "https://api.mainnet.solana.com",
+      "https://solana-mainnet.g.alchemy.com/v2/LjKLGXZEd0-047semdChx0Ba62BeVTJC",
       "confirmed"
     );
     const toPubkey = new PublicKey(toAddress);
@@ -82,11 +82,11 @@ const SendTransactionForm = () => {
     }
   };
 
-  useEffect(() => {
-    if (!connected) {
-      wallet?.adapter?.connect();
-    }
-  }, [connected, wallet]);
+  // useEffect(() => {
+  //   if (!connected) {
+  //     wallet?.adapter?.connect();
+  //   }
+  // }, [connected, wallet]);
 
   return (
     <div className="w-96 p-6 bg-gray-900 rounded-lg shadow-lg">
@@ -127,13 +127,17 @@ const SendTransactionForm = () => {
 function App() {
   const wallets = useMemo(() => [new SolflareWalletAdapter()], []);
 
-  useEffect(() => {
-    const wallet = wallets[0];
-    wallet.connect();
-  }, [wallets]);
+  // useEffect(() => {
+  //   const wallet = wallets[0];
+  //   wallet.connect();
+  // }, [wallets]);
 
   return (
-    <ConnectionProvider endpoint={"https://api.mainnet.solana.com/"}>
+    <ConnectionProvider
+      endpoint={
+        "https://solana-mainnet.g.alchemy.com/v2/LjKLGXZEd0-047semdChx0Ba62BeVTJC/"
+      }
+    >
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <div className="h-screen bg-black flex items-center justify-center text-white">
