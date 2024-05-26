@@ -9,6 +9,6 @@ services:
       - "8900:8900"
       - "3000:3000"
     volumes:
-      - .:/home
+      - ./:/home
 volumes:
   solanadata:

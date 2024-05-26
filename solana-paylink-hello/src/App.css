@@ -1,0 +1,6 @@
+
+/* Tailwind CSS is used for styling. If not already installed, include it in your project */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
