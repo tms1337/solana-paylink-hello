@@ -1,3 +1,7 @@
+## docker specific
+## for this project
+**/ubuntu/
+
 /target
 Cargo.lock
 
