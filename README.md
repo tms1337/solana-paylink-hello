@@ -1,3 +1,7 @@
+## Try out
+
+Deployed at https://solana-paylink-hello.vercel.app/?id=zmuYC5bjGuPg
+
 ## Demo
 
 Click to play:
