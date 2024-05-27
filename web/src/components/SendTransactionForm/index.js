@@ -1,7 +1,7 @@
-import "@solana/wallet-adapter-react-ui/styles.css";
-import "./App.css";
+import React, { useEffect, useState } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useLocation } from "react-router-dom";
 
-import React, { useEffect, useState, useMemo } from "react";
 import {
   Connection,
   LAMPORTS_PER_SOL,
@@ -12,16 +12,11 @@ import {
 import {
   ConnectionProvider,
   WalletProvider,
-  useWallet,
 } from "@solana/wallet-adapter-react";
 import {
   WalletModalProvider,
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
-import { SolflareWalletAdapter } from "@solana/wallet-adapter-solflare";
-import { useLocation } from "react-router-dom";
-import { Buffer } from "buffer";
-window.Buffer = Buffer; // Ensure Buffer is globally available
 
 const getAddress = async (id) => {
   const addresses = {
@@ -33,7 +28,7 @@ const getAddress = async (id) => {
 };
 
 const SendTransactionForm = () => {
-  const { publicKey, sendTransaction, wallet, connected } = useWallet();
+  const { publicKey, sendTransaction } = useWallet();
   const [toAddress, setToAddress] = useState("");
   const [value, setValue] = useState("");
   const [modalMessage, setModalMessage] = useState("");
@@ -144,25 +139,4 @@ const SendTransactionForm = () => {
   );
 };
 
-function App() {
-  const wallets = useMemo(() => [new SolflareWalletAdapter()], []);
-
-  return (
-    <ConnectionProvider
-      endpoint={
-        "https://solana-mainnet.g.alchemy.com/v2/LjKLGXZEd0-047semdChx0Ba62BeVTJC/"
-      }
-    >
-      {/* <WalletProvider wallets={wallets} autoConnect> */}
-      <WalletProvider wallets={wallets}>
-        <WalletModalProvider>
-          <div className="h-screen bg-black flex items-center justify-center text-white">
-            <SendTransactionForm />
-          </div>
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
-  );
-}
-
-export default App;
+export default SendTransactionForm;
